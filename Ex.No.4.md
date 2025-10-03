@@ -46,9 +46,113 @@ Deploy the website.
 Upload to GitHub Pages for free hosting.
 
 ## PROGRAM
+### Calculator.jsx:
+```jsx
+import React, { useState } from 'react';
+import './Calculator.css';
+
+function Calculator() {
+  const [input, setInput] = useState('');
+
+  const handleClick = (value) => {
+    if (value === '=') {
+      try {
+        setInput(eval(input).toString());
+      } catch {
+        setInput('Error');
+      }
+    } else if (value === 'C') {
+      setInput('');
+    } else {
+      setInput(input + value);
+    }
+  };
+
+  const buttons = [
+    '7', '8', '9', '/',
+    '4', '5', '6', '*',
+    '1', '2', '3', '-',
+    '0', 'C', '=', '+'
+  ];
+
+  return (
+    <div className="calculator">
+      <input className="display" type="text" value={input} disabled />
+      <div className="buttons">
+        {buttons.map((btn, i) => (
+          <button key={i} onClick={() => handleClick(btn)}>
+            {btn}
+          </button>
+        ))}
+      </div>
+      <h3 style={{"color":'white'}}>Keerthi Vasan A</h3>
+      <h3 style={{"color":'white'}}>212222240048</h3>
+    </div>
+  );
+}
 
 
+export default Calculator;
+
+```
+
+### Calculator.css:
+
+```css
+.calculator {
+    max-width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #222;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .display {
+    width: 100%;
+    height: 60px;
+    font-size: 24px;
+    text-align: right;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: #eee;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  button {
+    flex: 1 0 22%;
+    padding: 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background: #444;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background: #666;
+  }
+  
+  @media (max-width: 400px) {
+    .calculator {
+      width: 90%;
+    }
+  }
+  
+
+```
 ## OUTPUT
+
+<img width="672" height="531" alt="hellll" src="https://github.com/user-attachments/assets/a3c52172-db76-4bbb-9131-65cb71c480a5" />
 
 
 ## RESULT
